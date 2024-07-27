@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Form with MNC Logos</title>
+    <style>
+        body {
+            perspective: 1000px;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #6b73ff, #000dff, #e1eec3, #f05053);
+            background-size: 600% 600%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            transform-style: preserve-3d;
+            animation: rotate 10s infinite linear;
+            width: 350px;
+            height: 650px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @keyframes rotate {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+        .form-box {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #6b73ff, #000dff, #e1eec3, #f05053);
+            background-size: 600% 600%;
+            animation: gradient 15s ease infinite;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        fieldset {
+            border: none;
+            padding: 10px;
+            margin-bottom: 15px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+        }
+        fieldset::before {
+            content: '';
+            position: absolute;
+            top: -3px; bottom: -3px; left: -3px; right: -3px;
+            z-index: -1;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #6b73ff, #000dff, #e1eec3, #f05053);
+            background-size: 200% 200%;
+            animation: gradientBorder 5s ease infinite;
+            border-radius: 13px;
+        }
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        legend {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #6b73ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #000dff;
+        }
+        .logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .logos img {
+            width: 100px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1>Company Portal</h1>
+            <h2>HTML <code>&lt;fieldset&gt;</code> Tag Form</h2>
+            <form>
+                <div class="Title">
+                    Suggest articles for this website
+                </div>
+                <fieldset>
+                    <legend>Java:</legend>
+                    Title: <input type="text" class="input-field"><br>
+                    Link: <input type="text" class="input-field"><br>
+                    UrlLink: <input type="text" class="input-field"><br>
+                </fieldset>
+                <fieldset>
+                    <legend>JavaScript</legend>
+                    Title: <input type="text" class="input-field"><br>
+                    Link: <input type="text" class="input-field"><br>
+                    UrlLink: <input type="text" class="input-field"><br>
+                </fieldset>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="logos">
+            <img src="path/to/logo1.png" alt="Company 1 Logo">
+            <img src="path/to/logo2.png" alt="Company 2 Logo">
+            <img src="path/to/logo3.png" alt="Company 3 Logo">
+            <img src="path/to/logo4.png" alt="Company 4 Logo">
+            <!-- Add more logos as needed -->
+        </div>
+    </div>
+    <script>
+        const container = document.querySelector('.container');
+        const formBox = document.querySelector('.form-box');
+
+        formBox.addEventListener('click', () => {
+            container.style.animation = 'none';
+        });
+
+        formBox.addEventListener('mouseleave', () => {
+            container.style.animation = 'rotate 10s infinite linear';
+        });
+
+        document.querySelectorAll('.input-field').forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.value.trim() !== '') {
+                    container.style.animation = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
